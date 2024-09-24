@@ -46,7 +46,7 @@ class DBmysql {
         $result = [];
         $selector = "WHERE";
 
-        if ($data['id'] != null) {
+        if (isset($data['id']) && $data['id']!= null) {
             $sql .=  $selector . " id=" . (int)$data['id'] . " "; 
             $selector = "AND";
         }
