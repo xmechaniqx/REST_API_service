@@ -66,11 +66,6 @@ class ControllerRestApiService {
         if (isset($_GET['efficiency'])){
          $data['efficiency'] = $_GET['efficiency'];
         }
-        if (!isset($data)) {
-            echo  "Некорректный запрос";
-            return;
-        };
-
         try {
            $result = $this->rest_model->get($data);
             if (isset($result)) {
