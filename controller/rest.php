@@ -67,7 +67,7 @@ class ControllerRestApiService {
             return;
         };
 
-        try {а
+        try {
            $result = $this->rest_model->get($data);
             if (isset($result)) {
                 $response = [
