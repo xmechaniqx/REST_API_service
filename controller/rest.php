@@ -98,7 +98,7 @@ class ControllerRestApiService {
     public function update() {
         $log = new Log('rest.log');
         $json = file_get_contents('php://input');
-        if ($_GET['user_id']){
+        if (isset($_GET['user_id'])){
             $id = $_GET['user_id'];
         } else {
             $id = null;
@@ -134,7 +134,7 @@ class ControllerRestApiService {
      */
     public function delete() {
         $log = new Log('rest.log');
-        if ($_GET['user_id']){
+        if (isset($_GET['user_id'])){
             $id = $_GET['user_id'];
         } else {
             $id = null;
