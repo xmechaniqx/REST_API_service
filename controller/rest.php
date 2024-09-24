@@ -55,16 +55,16 @@ class ControllerRestApiService {
     public function get() {
         $data = [];
         if (isset($_GET['user_id'])){
-         $data = ['id' => $_GET['user_id']];
+         $data['id'] = $_GET['user_id'];
             }
         if (isset($_GET['full_name'])){
-         $data = ['full_name' => $_GET['full_name']];
+         $data['full_name'] = $_GET['full_name'];
             }
         if (isset($_GET['role'])){
-         $data = ['role' => $_GET['role']];
+         $data['role'] = $_GET['role'];
             }
         if (isset($_GET['efficiency'])){
-         $data = ['efficiency' => $_GET['efficiency']];
+         $data['efficiency'] = $_GET['efficiency'];
             }
 
         try {
