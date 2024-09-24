@@ -50,15 +50,15 @@ class DBmysql {
             $sql .=  $selector . " id=" . (int)$data['id'] . " "; 
             $selector = "AND";
         }
-        if ($data['full_name'] != null) {
+        if (isset($data['full_name']) && $data['full_name']!= null) {
             $sql .= $selector . " full_name='" . $data['full_name'] . "' "; 
             $selector = "AND";
         }
-        if ($data['role'] != null) {
+        if (isset($data['role']) && $data['role']!= null) {
             $sql .= $selector . " role='" . $data['role'] . "' "; 
             $selector = "AND";
         }
-        if ($data['efficiency'] != null) {
+        if (isset($data['efficiency']) && $data['efficiency']!= null) {
             $sql .= $selector . " efficiency=" . (int)$data['efficiency'];
         }
 
