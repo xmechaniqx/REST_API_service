@@ -54,12 +54,18 @@ class ControllerRestApiService {
      */
     public function get() {
         $data = [];
-        $data = [
-                'id' => $_GET['user_id'],
-                'full_name' => $_GET['full_name'],
-                'role' => $_GET['role'],
-                'efficiency' => $_GET['efficiency']
-            ];
+        if (isset($_GET['user_id']){
+         $data = ['id' => $_GET['user_id']};
+            }
+        if (isset($_GET['full_name']){
+         $data = ['full_name' => $_GET['full_name'],};
+            }
+        if (isset($_GET['role']){
+         $data = ['role' => $_GET['role']};
+            }
+        if (isset($_GET['efficiency']){
+         $data = ['efficiency' => $_GET['efficiency']};
+            }
 
         try {
            $result = $this->rest_model->get($data);
