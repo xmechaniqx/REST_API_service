@@ -56,13 +56,17 @@ class ControllerRestApiService {
         $data = [];
         if (isset($_GET['user_id'])){
          $data['id'] = $_GET['user_id'];
-        } else if (isset($_GET['full_name'])){
+        } 
+        if (isset($_GET['full_name'])){
          $data['full_name'] = $_GET['full_name'];
-        } else if (isset($_GET['role'])){
+        } 
+        if (isset($_GET['role'])){
          $data['role'] = $_GET['role'];
-        } else if (isset($_GET['efficiency'])){
+        } 
+        if (isset($_GET['efficiency'])){
          $data['efficiency'] = $_GET['efficiency'];
-        } else {
+        }
+        if (!isset($data)) {
             echo  "Некорректный запрос";
             return;
         };
