@@ -24,39 +24,37 @@ class ControllerRestApiService {
         $data = json_decode($json, true);
 
         try {
-            $result = $this->rest_model->create($data);
-        if (isset($result)) {
-            $response = [
-                "success" => true,
-                "result" => [
-                    "id" => $result
-                ]
-            ];
-        }
-        } catch (Exception $error) {
-            $response = [
-                "success" => false,
-                "result" => [
-                    "error" => [
-                        "code" => $error->getCode(),
-                        "message" => $error->getMessage()
+                $result = $this->rest_model->create($data);
+            if (isset($result)) {
+                $response = [
+                    "success" => true,
+                    "result" => [
+                        "id" => $result
                     ]
-                ]
-            ];
-        } finally {
-            echo json_encode($response);
-        }        
+                ];
+            }
+            } catch (Exception $error) {
+                $response = [
+                    "success" => false,
+                    "result" => [
+                        "error" => [
+                            "code" => $error->getCode(),
+                            "message" => $error->getMessage()
+                        ]
+                    ]
+                ];
+            } finally {
+                echo json_encode($response);
+            }     
     }
 
     /**
      * Метод обработки обращения для чтения записи пользователя
      * @return void
      */
-    public function get() {
+    public function get($id) {
         $data = [];
-        if (isset($_GET['user_id'])){
-         $data['id'] = $_GET['user_id'];
-        } 
+        $data['id'] = $id;
         if (isset($_GET['full_name'])){
          $data['full_name'] = $_GET['full_name'];
         } 
@@ -95,16 +93,11 @@ class ControllerRestApiService {
      * Метод обработки обращения для обновления записи пользователя
      * @return void
      */
-    public function update() {
+    public function update($id) {
         $log = new Log('rest.log');
         $json = file_get_contents('php://input');
-        if (isset($_GET['user_id'])){
-            $id = $_GET['user_id'];
-        } else {
-            $id = null;
-            $log->write(" Запрос с пустым идентификатором");
-        }
         $data = json_decode($json, true);
+
         try {
             $result = $this->rest_model->update($data, $id);
             if (isset($result)) {
@@ -132,14 +125,9 @@ class ControllerRestApiService {
      * Метод обработки обращения для удаления записи пользователя
      * @return void
      */
-    public function delete() {
+    public function delete($id) {
         $log = new Log('rest.log');
-        if (isset($_GET['user_id'])){
-            $id = $_GET['user_id'];
-        } else {
-            $id = null;
-            $log->write(" Запрос с пустым идентификатором");
-        }
+        
         try {
             $result = $this->rest_model->delete($id);
             if (empty($result)) {

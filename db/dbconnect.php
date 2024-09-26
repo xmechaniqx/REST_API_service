@@ -79,11 +79,6 @@ class DBmysql {
     }
     public function update($data, $id) {
         $log = new Log('db.log');
-        $result = $this->getUser($id);
-        if (!isset($result)) {
-            throw new Exception("Отсутствует пользователь по заданному идентификатору");
-        }
-
         $sql = "UPDATE users SET ";
         if ($data['full_name']) {
             $sql.= "full_name='" . $data['full_name'] . "', ";
@@ -104,7 +99,7 @@ class DBmysql {
             $log->write("Ошибка обработки PATCH-запроса при обращении к БД");
             throw new Exception("Ошибка обработки PATCH-запроса при обращении к БД");
         }
-
+        $result = $this->getUser($id);
         return $result;
     }
 
